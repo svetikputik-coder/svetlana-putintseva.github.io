@@ -1,106 +1,254 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRASS KILLER — Бензокосы</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GRASS KILLER — Учёт бензокос</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f7f0;
+        /* ===== ОБЩИЕ СТИЛИ ===== */
+        * {
             margin: 0;
-            padding: 40px 20px;
-            text-align: center;
+            padding: 0;
+            box-sizing: border-box;
         }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f7f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* ===== КОНТЕЙНЕР (как карточка приложения) ===== */
         .container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2e7d32;
-            font-size: 36px;
-            margin-bottom: 5px;
-        }
-        h2 {
-            color: #555;
-            font-weight: normal;
-            font-size: 22px;
-            margin-top: 0;
-        }
-        .download-btn {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
+            max-width: 1100px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(0, 60, 20, 0.15);
+            padding: 50px 60px 40px;
+            text-align: center;
             transition: 0.3s;
         }
-        .download-btn:hover {
-            background: #388E3C;
-            transform: scale(1.05);
+
+        /* ===== ЛОГОТИП И ЗАГОЛОВОК ===== */
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
         }
-        .features {
+        .logo-icon {
+            font-size: 52px;
+        }
+        .logo h1 {
+            font-size: 46px;
+            font-weight: 700;
+            color: #1f5a2a;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 20px;
+            color: #4e6b50;
+            font-weight: 400;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #d4e8d4;
+            padding-bottom: 20px;
+        }
+
+        /* ===== ОПИСАНИЕ ===== */
+        .desc {
+            font-size: 18px;
+            color: #2d3a2d;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        /* ===== СЕТКА ФУНКЦИЙ ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 30px 0 35px;
             text-align: left;
-            margin: 30px 0;
-            padding: 0;
-            list-style: none;
         }
-        .features li {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
+        .feature-item {
+            background: #f5faf5;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 16px;
+            color: #1f3a22;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #dce8dc;
         }
+        .feature-item span {
+            font-size: 22px;
+        }
+
+        /* ===== КНОПКИ СКАЧИВАНИЯ (как в десктопе) ===== */
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0 35px;
+        }
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 44px;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #000 !important;
+            background: #8ccb7e;
+            border: none;
+            box-shadow: 0 4px 14px rgba(100, 180, 80, 0.3);
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        .btn-download:hover {
+            transform: scale(1.04);
+            background: #76ba66;
+            box-shadow: 0 8px 24px rgba(80, 160, 60, 0.4);
+        }
+        .btn-download i {
+            font-size: 28px;
+        }
+
+        /* ===== QR-КОД ===== */
+        .qr-block {
+            margin: 25px 0 30px;
+        }
+        .qr-block p {
+            font-size: 16px;
+            color: #3b5a3b;
+            margin-bottom: 8px;
+        }
+        .qr-block img {
+            width: 160px;
+            height: 160px;
+            border-radius: 16px;
+            border: 2px solid #bcd9bc;
+            background: #fff;
+            padding: 8px;
+        }
+
+        /* ===== ФУТЕР ===== */
         .footer {
             margin-top: 30px;
-            color: #888;
-            font-size: 14px;
+            padding-top: 20px;
+            border-top: 2px solid #e4efe4;
+            font-size: 15px;
+            color: #5b735b;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
         }
-        .qr {
-            margin-top: 20px;
+        .footer a {
+            color: #2b6b2b;
+            text-decoration: none;
+            font-weight: 600;
         }
-        .qr img {
-            width: 150px;
-            height: 150px;
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 700px) {
+            .container {
+                padding: 30px 20px;
+                border-radius: 24px;
+            }
+            .logo h1 {
+                font-size: 32px;
+            }
+            .btn-download {
+                padding: 14px 28px;
+                font-size: 17px;
+                width: 100%;
+                justify-content: center;
+            }
+            .download-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .logo h1 {
+                font-size: 26px;
+            }
+            .logo-icon {
+                font-size: 38px;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🌿 GRASS KILLER</h1>
-    <h2>Учёт бензокос</h2>
 
-    <p style="font-size:18px; color:#333;">
-        Десктопное и мобильное приложение для ведения каталога бензокос.
+    <!-- Логотип -->
+    <div class="logo">
+        <span class="logo-icon">🌿</span>
+        <h1>GRASS KILLER</h1>
+    </div>
+    <div class="subtitle">Учёт бензокос — десктоп + мобильное приложение</div>
+
+    <!-- Описание -->
+    <p class="desc">
+        Ведите каталог бензокос с 9 характеристиками: модель, производитель, тактность,
+        мощность, режущая система, рукоятка, конструкция штанги, количество, цена.
+        Добавляйте, редактируйте, удаляйте, ищите, сортируйте и экспортируйте в Excel / CSV.
     </p>
 
-    <ul class="features">
-        <li>✅ 9 полей для учёта: модель, производитель, тактность, мощность, режущая система, рукоятка, конструкция штанги, количество, цена</li>
-        <li>✅ Добавление, редактирование, удаление, поиск, сортировка</li>
-        <li>✅ Экспорт в Excel / CSV</li>
-        <li>✅ Десктопная и мобильная версии</li>
-    </ul>
-
-    <div>
-        <a href="Release.zip" class="download-btn">💻 Скачать для Windows</a>
-        <a href="app-debug.apk" class="download-btn">📱 Скачать для Android</a>
+    <!-- Функции -->
+    <div class="features-grid">
+        <div class="feature-item"><span>📋</span> 9 полей для учёта</div>
+        <div class="feature-item"><span>✏️</span> Добавление / редактирование</div>
+        <div class="feature-item"><span>🗑️</span> Удаление с подтверждением</div>
+        <div class="feature-item"><span>🔍</span> Поиск по всем столбцам</div>
+        <div class="feature-item"><span>📊</span> Сортировка по любому столбцу</div>
+        <div class="feature-item"><span>💾</span> Экспорт в Excel / CSV</div>
+        <div class="feature-item"><span>🖥️</span> Десктопная версия (Windows)</div>
+        <div class="feature-item"><span>📱</span> Мобильная версия (Android)</div>
     </div>
 
-    <div class="qr">
-        <p>📲 Отсканируйте QR-код для скачивания:</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://svetlana-putintseva.github.io" alt="QR-код">
+    <!-- Кнопки скачивания -->
+    <div class="download-buttons">
+        <a href="Release.zip" class="btn-download">
+            <span>💻</span> Скачать для Windows
+        </a>
+        <a href="app-debug.apk" class="btn-download">
+            <span>📱</span> Скачать для Android
+        </a>
     </div>
 
+
+    <!-- Футер -->
     <div class="footer">
-        Разработчик: Путинцева С.А. | Группа ИС-941 | КемГУ © 2026
+        <span>© 2026 Путинцева С.А. · Группа ИС-941 · КемГУ</span>
+        <span>
+            <a href="https://github.com/svetluputik-coder/svetlana-putintseva.github.io" target="_blank">Исходный код на GitHub</a>
+        </span>
     </div>
+
 </div>
 
 </body>
