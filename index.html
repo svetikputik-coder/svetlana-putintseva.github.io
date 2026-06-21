@@ -116,13 +116,12 @@
             box-shadow: 0 8px 28px rgba(100, 180, 80, 0.2);
         }
         .btn-download img {
-            width: 120px;
-            height: 120px;
-            border-radius: 16px;
-            object-fit: cover;
+            width: 100%;         /* растянуть на всю ширину кнопки */
+            height: auto;
+            border-radius: 16px 16px 0 0;  /* закругление только сверху */
             border: 1px solid #e0ece0;
             background: #f5faf5;
-        }
+}
         .btn-download .label {
             display: flex;
             align-items: center;
