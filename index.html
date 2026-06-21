@@ -92,6 +92,11 @@
             gap: 30px;
             margin: 30px 0 35px;
         }
+
+        .btn-download {
+            flex: 1 1 300px;        /* каждая кнопка минимум 300px */
+            max-width: 500px;       /* и не больше 500px */
+        }
         .btn-download {
             display: inline-flex;
             flex-direction: column;
@@ -116,12 +121,13 @@
             box-shadow: 0 8px 28px rgba(100, 180, 80, 0.2);
         }
         .btn-download img {
-            width: 100%;         /* растянуть на всю ширину кнопки */
-            height: auto;
-            border-radius: 16px 16px 0 0;  /* закругление только сверху */
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            object-fit: cover;
             border: 1px solid #e0ece0;
             background: #f5faf5;
-}
+        }
         .btn-download .label {
             display: flex;
             align-items: center;
@@ -239,11 +245,6 @@
             <img src="assets/mobile_preview.png" alt="Мобильное приложение" />
             <span class="label"><span>📱</span> Скачать для Android</span>
         </a>
-    </div>
-
-    <div class="qr-block">
-        <p>📲 QR-код для быстрого перехода</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://svetlana-putintseva.github.io" alt="QR-код" />
     </div>
 
     <div class="footer">
