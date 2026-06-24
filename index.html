@@ -66,39 +66,44 @@
             font-size: 22px;
         }
 
-        /* ===== КНОПКИ (красивые, без картинок) ===== */
+        /* ===== КАРТИНКИ-КНОПКИ ===== */
         .download-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 24px;
+            gap: 30px;
             margin: 30px 0 35px;
         }
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 18px 48px;
-            border-radius: 60px;
-            font-size: 20px;
-            font-weight: 400;
-            text-decoration: none;
-            color: #000 !important;
-            background: #8ccb7e;
-            border: none;
-            box-shadow: 0 4px 14px rgba(100, 180, 80, 0.3);
+        .btn-image {
+            display: inline-block;
+            border-radius: 20px;
+            overflow: hidden;
             transition: 0.25s;
             cursor: pointer;
-            min-width: 220px;
+            border: 3px solid transparent;
+            max-width: 320px;
+            width: 100%;
+            text-decoration: none;
         }
-        .btn-download:hover {
-            transform: scale(1.04);
-            background: #76ba66;
-            box-shadow: 0 8px 24px rgba(80, 160, 60, 0.4);
+        .btn-image:hover {
+            transform: scale(1.03);
+            border-color: #4CAF50;
+            box-shadow: 0 8px 28px rgba(76, 175, 80, 0.3);
         }
-        .btn-download i {
-            font-size: 24px;
+        .btn-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .btn-image .label {
+            display: block;
+            padding: 12px 0 16px;
+            font-size: 18px;
+            font-weight: 400;
+            color: #1f3a22;
+            background: #f5faf5;
+            text-align: center;
+            border-top: 1px solid #e0ece0;
         }
 
         .qr-block {
@@ -117,6 +122,20 @@
             border: 2px solid #bcd9bc;
             background: #fff;
             padding: 8px;
+        }
+
+        /* ===== КАРТИНКА ВНИЗУ ===== */
+        .bottom-image {
+            margin-top: 30px;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .bottom-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
         }
 
         .footer {
@@ -140,20 +159,6 @@
             text-decoration: underline;
         }
 
-        /* ===== КАРТИНКА ВНИЗУ НА ВЕСЬ ЭКРАН ===== */
-        .bottom-image {
-            margin-top: 30px;
-            width: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        .bottom-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 16px;
-        }
-
         @media (max-width: 700px) {
             .container {
                 padding: 30px 20px;
@@ -162,15 +167,8 @@
             .logo h1 {
                 font-size: 32px;
             }
-            .btn-download {
-                padding: 14px 28px;
-                font-size: 17px;
-                width: 100%;
-                justify-content: center;
-            }
-            .download-buttons {
-                flex-direction: column;
-                align-items: stretch;
+            .btn-image {
+                max-width: 280px;
             }
             .features-grid {
                 grid-template-columns: 1fr 1fr;
@@ -182,6 +180,9 @@
             }
             .logo h1 {
                 font-size: 26px;
+            }
+            .btn-image {
+                max-width: 100%;
             }
         }
     </style>
@@ -206,23 +207,22 @@
         <div class="feature-item"><span>📱</span> Мобильная версия (Android)</div>
     </div>
 
+    <!-- ===== КАРТИНКИ-КНОПКИ ===== -->
     <div class="download-buttons">
-        <a href="Release.zip" class="btn-download">
-            💻 Скачать для Windows
+        <a href="Release.zip" class="btn-image">
+            <img src="assets/desktop_preview.png" alt="Скачать для Windows" />
         </a>
-        <a href="app-debug.apk" class="btn-download">
-            📱 Скачать для Android
+        <a href="app-debug.apk" class="btn-image">
+            <img src="assets/mobile_preview.png" alt="Скачать для Android" />
         </a>
     </div>
 
-    <!-- ===== КАРТИНКА ВНИЗУ НА ВЕСЬ ЭКРАН ===== -->
     <div class="bottom-image">
         <img src="assets/bottom_image.png" alt="GRASS KILLER" />
     </div>
 
     <div class="footer">
         <span>© 2026 Путинцева С.А. · Группа ИС-941 · КемГУ</span>
-        <span><a href="https://github.com/svetluputik-coder/svetlana-putintseva.github.io" target="_blank">Исходный код на GitHub</a></span>
     </div>
 
 </div>
